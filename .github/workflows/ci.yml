@@ -17,9 +17,12 @@ jobs:
       run: |
         npm install
         npm run-script build
-    - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v3
-      with:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: build
+    - name: wget
+      run: |
+        mkdir output
+        cd output
+        ls -lh
+        wget "https://downloads.scratch.mit.edu/desktop/Scratch%20Setup.exe"
+        ls -lh
+        
+        
