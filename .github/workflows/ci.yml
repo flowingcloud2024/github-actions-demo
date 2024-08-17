@@ -13,16 +13,15 @@ jobs:
         node-version: 20
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Install and Build
-      run: |
-        npm install
-        npm run-script build
     - name: wget
       run: |
         mkdir output
+        pwd
         cd output
         ls -lh
-        wget "https://downloads.scratch.mit.edu/desktop/Scratch%20Setup.exe"
+        url_dst="https://downloads.scratch.mit.edu/desktop/Scratch%20Setup.exe"
+        url_dst=`curl -L --HEAD ${url_dst} -w %{url_effective} | tail -n 1`
+        wget -q "url_dst"
         ls -lh
         
         
